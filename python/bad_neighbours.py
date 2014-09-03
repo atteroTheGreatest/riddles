@@ -14,10 +14,9 @@ def collect_founds(neighbours):
 
     best_so_far = [neighbours[0], max(neighbours[0], neighbours[1])]
 
-    if len(neighbours) > 2:
-        for i in range(2, len(neighbours)):
-            best_now = max(best_so_far[i - 2] + neighbours[i], best_so_far[i - 1])
-            best_so_far.append(best_now)
+    for neighbour in neighbours[2:]:
+        best_now = max(best_so_far[-2] + neighbour, best_so_far[-1])
+        best_so_far.append(best_now)
 
     return max(best_so_far)
 
